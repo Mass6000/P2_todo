@@ -1,0 +1,36 @@
+$myBackgroundLight: #E7E4EF;
+$myZebraColor: #C3C0C9;
+$myBackgroundDark: #0F0E0F;
+$myAccentColorOne: #122775;
+$myAccentColorTwo: #112057;
+$myAccentColorThree: #0B1544;
+$myJumboMargins: 15px;
+$myJumboPaddings: 10px;
+
+body {
+  background-color: $myBackgroundLight;
+  height: 2000px;
+}
+
+.jumbotron {
+  margin-bottom: $myJumboMargins;
+  padding-top: $myJumboPaddings;
+  padding-bottom: $myJumboPaddings;
+  background-color: $myAccentColorOne;
+  h1 {
+    text-align: center;
+    color: $myBackgroundLight;
+  }
+}
+.navContainer {
+  background-color: $myBackgroundLight;
+  .navbar-toggler {
+    border: 0px;
+  }
+  .btn {
+    background-color: $myAccentColorOne;
+    color: $myBackgroundLight;
+    border-color: $myAccentColorThree;
+  }
+}
+

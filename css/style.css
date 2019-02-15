@@ -1,0 +1,21 @@
+body {
+  background-color: #E7E4EF;
+  height: 2000px; }
+
+.jumbotron {
+  margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #122775; }
+  .jumbotron h1 {
+    text-align: center;
+    color: #E7E4EF; }
+
+.navContainer {
+  background-color: #E7E4EF; }
+  .navContainer .navbar-toggler {
+    border: 0px; }
+  .navContainer .btn {
+    background-color: #122775;
+    color: #E7E4EF;
+    border-color: #0B1544; }

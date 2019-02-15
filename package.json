@@ -1,0 +1,27 @@
+{
+  "name": "p2_todo",
+  "version": "1.0.0",
+  "description": "MTECH todo list JavaScript Project",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mass6000/P2_todo.git"
+  },
+  "keywords": [
+    "todo",
+    "list"
+  ],
+  "author": "John Chase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mass6000/P2_todo/issues"
+  },
+  "homepage": "https://github.com/Mass6000/P2_todo#readme",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
