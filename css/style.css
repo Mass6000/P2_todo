@@ -10,12 +10,29 @@ body {
   .jumbotron h1 {
     text-align: center;
     color: #E7E4EF; }
+  .jumbotron h3 {
+    text-align: center;
+    color: #E7E4EF; }
 
-.navContainer {
-  background-color: #E7E4EF; }
-  .navContainer .navbar-toggler {
-    border: 0px; }
-  .navContainer .btn {
-    background-color: #122775;
-    color: #E7E4EF;
-    border-color: #0B1544; }
+.theLists {
+  padding-top: 10px;
+  font-size: 2em; }
+  .theLists div {
+    text-align: center; }
+
+.theTasks {
+  padding-top: 10px; }
+  .theTasks div {
+    text-align: center; }
+
+.fa-minus-circle {
+  color: #FF0000;
+  padding-left: 10px; }
+
+.fa-circle {
+  padding-right: 10px;
+  color: #122775; }
+
+.fa-check-circle {
+  padding-right: 10px;
+  color: #008000; }

@@ -4,8 +4,12 @@ $myBackgroundDark: #0F0E0F;
 $myAccentColorOne: #122775;
 $myAccentColorTwo: #112057;
 $myAccentColorThree: #0B1544;
+$myDeleteColor: #FF0000;
+$mySelectedColor: #008000;
+$myListsSize: 2em;
 $myJumboMargins: 15px;
 $myJumboPaddings: 10px;
+$myListsPaddings: 10px;
 
 body {
   background-color: $myBackgroundLight;
@@ -17,20 +21,65 @@ body {
   padding-top: $myJumboPaddings;
   padding-bottom: $myJumboPaddings;
   background-color: $myAccentColorOne;
+
   h1 {
     text-align: center;
     color: $myBackgroundLight;
   }
-}
-.navContainer {
-  background-color: $myBackgroundLight;
-  .navbar-toggler {
-    border: 0px;
-  }
-  .btn {
-    background-color: $myAccentColorOne;
+
+  h3 {
+    text-align: center;
     color: $myBackgroundLight;
-    border-color: $myAccentColorThree;
   }
 }
+
+.theLists {
+  padding-top: $myListsPaddings;
+  font-size: $myListsSize;
+
+  div {
+    text-align: center;
+  }
+}
+
+.theTasks {
+  padding-top: $myListsPaddings;
+
+  div {
+    text-align: center;
+  }
+}
+
+.fa-minus-circle {
+  color: $myDeleteColor;
+  padding-left: $myListsPaddings;
+}
+
+.fa-circle {
+  padding-right: $myListsPaddings;
+  color: $myAccentColorOne;
+}
+
+.fa-check-circle {
+  padding-right: $myListsPaddings;
+  color: $mySelectedColor;
+}
+
+//.navContainer {
+//  background-color: $myZebraColor;
+//
+//  .navbar-toggler {
+//    border: 0;
+//  }
+//
+//  .btn {
+//    background-color: $myAccentColorOne;
+//    color: $myBackgroundLight;
+//    border-color: $myAccentColorThree;
+//  }
+//
+//
+//
+//}
+
 
