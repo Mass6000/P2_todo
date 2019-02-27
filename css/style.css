@@ -14,10 +14,10 @@ body {
     text-align: center;
     color: #E7E4EF; }
 
-.theLists {
+#theLists {
   padding-top: 10px;
   font-size: 2em; }
-  .theLists div {
+  #theLists div {
     text-align: center; }
 
 .theTasks {
