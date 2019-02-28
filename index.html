@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -40,10 +40,7 @@
     <!-- todo make to do topics here -->
     <div id="theLists">
         <div id="listName0">
-            <i id="list-fa-circle0" class="fas fa-circle"></i>
-            <i id="list-fa-check-circle0" class="fas fa-check-circle"></i>
-            <span class="listRow" contenteditable="true" onkeyup="addList(this.value, event)">Name Your List</span>
-            <i id="list-fa-minus-circle0" class="fas fa-minus-circle"></i>
+            <input id="listNewName" value="Add Lists Here" onkeyup="addList(this.value, event)"></input>
         </div>
 
 

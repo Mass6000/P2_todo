@@ -48,7 +48,7 @@ class Task {
 // This is where input come into the program
 
 
-$('.listRow').on('click', function () {
+$('#listNewName').on('click', function () {
     document.execCommand('selectAll', false, null);
 });
 
@@ -59,9 +59,10 @@ function addList(myList, event) {
             $('#theLists').append('<div id="listName' + listCount
                 + '"><i id="list-fa-circle' + listCount
                 + '" class="fas fa-circle"></i><i id="list-fa-check-circle' + listCount
-                + '" class="fas fa-check-circle"></i><span class="listRow" contenteditable="true" onkeyup="addList(this.value, event">'
-                + myList + '</span><i id="list-fa-minus-circle' + listCount
+                + '" class="fas fa-check-circle"></i><input class="listRow" value="'
+                + myList + '" onkeyup="addList(this.value, event)"></input><i id="list-fa-minus-circle' + listCount
                 + '" class="fas fa-minus-circle"></i></div>');
+            $('.listNewName').val('');
             break;
 
 
