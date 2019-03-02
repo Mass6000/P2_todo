@@ -1,6 +1,17 @@
 body {
   background-color: #E7E4EF;
-  height: 2000px; }
+  height: 2000px;
+  font-family: 'Roboto', sans-serif; }
+
+.testingButton {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent; }
+
+.testingButton:focus {
+  outline: none; }
 
 .jumbotron {
   margin-bottom: 15px;
@@ -13,6 +24,19 @@ body {
   .jumbotron h3 {
     text-align: center;
     color: #E7E4EF; }
+
+.centerMe {
+  text-align: center; }
+
+#listNewName {
+  background: none;
+  border: none;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 2em; }
+
+#listNewName:focus {
+  outline: none; }
 
 #theLists {
   padding-top: 10px;

@@ -14,6 +14,20 @@ $myListsPaddings: 10px;
 body {
   background-color: $myBackgroundLight;
   height: 2000px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.testingButton {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+.testingButton:focus {
+  outline: none;
 }
 
 
@@ -33,11 +47,26 @@ body {
     color: $myBackgroundLight;
   }
 }
+.centerMe {
+  text-align: center;
+}
+
+#listNewName {
+  background: none;
+  border: none;
+  text-align: center;
+  padding-top: $myListsPaddings;
+  font-size: $myListsSize;
+}
+
+#listNewName:focus {
+  outline: none;
+;
+}
 
 #theLists {
   padding-top: $myListsPaddings;
   font-size: $myListsSize;
-
   div {
     text-align: center;
   }

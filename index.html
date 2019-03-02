@@ -16,17 +16,20 @@
             integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
             crossorigin="anonymous">
     <link
+            href="https://fonts.googleapis.com/css?family=Roboto"
+            rel="stylesheet">
+    <link
             rel="stylesheet"
             href="css/style.css"
             type="text/css">
     <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script
             defer
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script
             defer
@@ -38,14 +41,16 @@
         <h1>My ToDo Lists</h1>
     </div>
     <!-- todo make to do topics here -->
-    <div id="theLists">
-        <div id="listName0">
-            <input id="listNewName" value="Add Lists Here" onkeyup="addList(this.value, event)"></input>
-        </div>
-
-
+    <div class="centerMe">
+        <input id="listNewName" type="text" placeholder="Add List Here" onkeyup="addList(this.value, event)">
     </div>
-
+    <div id="theLists">
+        <!--<div id="listName0">-->
+            <!--<i class="far fa-circle"></i>-->
+            <!--<i class="fas fa-check-circle"></i>-->
+            <!--<button class="testingButton" type="submit"><i class="fas fa-minus-circle"></i></button>-->
+        <!--</div>-->
+    </div>
 
 
     <!-- todo make individual show here when selected -->
@@ -60,10 +65,10 @@
 
     <div class="theTasks">
         <div>
-            <i class="fas fa-circle"></i>
+            <i class="far fa-circle"></i>
             <i class="fas fa-check-circle"></i>
             <span class="listRows" contenteditable="true">Name Your Task</span>
-            <i class="fas fa-minus-circle"></i>
+            <button class="testingButton" type="submit"><i class="fas fa-minus-circle"></i></button>
         </div>
 
     </div>

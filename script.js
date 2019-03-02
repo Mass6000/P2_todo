@@ -1,33 +1,32 @@
-let taskMain = [],
-    listMain = [];
-
+let listName = [],
+    taskName = [];
 
 // Global Variables
 listCount = 0;
 
 class List {
     constructor(listName) {
-        this.listName = listName;
-        this.listChosen = false;
+        this.name = listName;
+        this.chosen = false;
     }
 
     changeListName(listName) {
-        this.listName = listName;
+        this.name = listName;
     }
 
     listPicked() {
-        this.listChosen = true;
+        this.chosen = true;
     }
 
     listUnPicked() {
-        this.listChosen = false;
+        this.chosen = false;
     }
 }
 
 
 class Task {
     constructor(listName, taskName) {
-        this.listName = listName;
+        this.name = listName;
         this.taskName = taskName;
         this.taskComplete = false;
     }
@@ -48,24 +47,36 @@ class Task {
 // This is where input come into the program
 
 
-$('#listNewName').on('click', function () {
-    document.execCommand('selectAll', false, null);
-});
+// $('#listNewName').on('click', function () {
+//     document.execCommand('selectAll', false, null);
+// });
 
-function addList(myList, event) {
+function addList(list, event) {
     switch (event.key) {
         case 'Enter':
-            listCount ++;
-            $('#theLists').append('<div id="listName' + listCount
-                + '"><i id="list-fa-circle' + listCount
-                + '" class="fas fa-circle"></i><i id="list-fa-check-circle' + listCount
-                + '" class="fas fa-check-circle"></i><input class="listRow" value="'
-                + myList + '" onkeyup="addList(this.value, event)"></input><i id="list-fa-minus-circle' + listCount
-                + '" class="fas fa-minus-circle"></i></div>');
-            $('.listNewName').val('');
+            let simpleTest = listName.filter(function(listName) {
+                return listName.name === list;
+            });
+            if (list === '' || simpleTest.length > 0) {
+                simpleTest = [];
+                alert ('You entered the same list name as before or you entered a blank list name');
+            } else {
+                listName[listCount] = new List(list);
+                listCount++;
+                reWriteList(listName);
+            }
+            $('#listNewName').val('');
             break;
+    }
+}
 
-
+function reWriteList(listName) {
+    for (let i = 0; i < listName.length; i++) {
+        $(`#listName${i}`).remove();
+    }
+    for (let i = 0; i < listName.length; i++) {
+        $(`#theLists`).append(`<div id="listName${i}"><i class="far fa-circle"></i><i class="fas fa-check-circle"></i><span>${listName[i].name}</span><button class="testingButton" type="submit"><i class="fas fa-minus-circle"></i></button>
+        </div>`)
     }
 }
 
