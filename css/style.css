@@ -28,6 +28,16 @@ body {
 .centerMe {
   text-align: center; }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .container .listFlex {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+
 #listNewName {
   background: none;
   border: none;
@@ -43,6 +53,12 @@ body {
   font-size: 2em; }
   #theLists div {
     text-align: center; }
+
+.fas {
+  line-height: inherit; }
+
+.far {
+  line-height: inherit; }
 
 .theTasks {
   padding-top: 10px; }

@@ -54,6 +54,7 @@ class Task {
 function addList(list, event) {
     switch (event.key) {
         case 'Enter':
+            list = list.toString();
             let simpleTest = listName.filter(function(listName) {
                 return listName.name === list;
             });
@@ -71,17 +72,44 @@ function addList(list, event) {
 }
 
 function reWriteList(listName) {
+    $(`.listFlex`).remove();
     for (let i = 0; i < listName.length; i++) {
         $(`#listName${i}`).remove();
     }
     for (let i = 0; i < listName.length; i++) {
-        $(`#theLists`).append(`<div id="listName${i}"><i class="far fa-circle"></i><i class="fas fa-check-circle"></i><span>${listName[i].name}</span><button class="testingButton" type="submit"><i class="fas fa-minus-circle"></i></button>
+        $(`#theLists`).append(`<div id="listName${i}" class="listFlex"><i id="circleHole${i}" onclick="lcheckMe(${i})" class="far fa-circle"></i><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i><span>${listName[i].name}</span><i id="deleteMe" onclick="ldeleteMe(${i})" class="fas fa-minus-circle"></i>
         </div>`)
+    }
+    for (let i = 0; i < listName.length; i++) {
+        if (listName[i].chosen) {
+            $(`#circleHole${i}`).hide();
+            $(`#circleCheck${i}`).show();
+        } else {
+            $(`#circleCheck${i}`).hide();
+            $(`#circleHole${i}`).show();
+        }
     }
 }
 
+function lcheckMe(item) {
+    $(`#circleHole${item}`).hide();
+    $(`#circleCheck${item}`).show();
+    listName[item].listPicked();
+}
 
-$('#list-fa-check-circle0').hide();
+function lunCheckMe(item) {
+    $(`#circleCheck${item}`).hide();
+    $(`#circleHole${item}`).show();
+    listName[item].listUnPicked();
+}
+
+function ldeleteMe(item) {
+    listCount --;
+    listName.splice(item, 1);
+    reWriteList(listName);
+}
+
+
 
 
 // task = new Task('My List', 'One');

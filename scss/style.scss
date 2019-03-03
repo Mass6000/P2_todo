@@ -47,8 +47,22 @@ body {
     color: $myBackgroundLight;
   }
 }
+
 .centerMe {
   text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .listFlex {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 #listNewName {
@@ -60,8 +74,7 @@ body {
 }
 
 #listNewName:focus {
-  outline: none;
-;
+  outline: none;;
 }
 
 #theLists {
@@ -70,6 +83,14 @@ body {
   div {
     text-align: center;
   }
+}
+
+.fas {
+  line-height: inherit;
+}
+
+.far {
+  line-height: inherit;
 }
 
 .theTasks {
