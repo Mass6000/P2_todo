@@ -20,6 +20,7 @@ body {
   background-color: #122775; }
   .jumbotron h1 {
     text-align: center;
+    margin-top: 15px;
     color: #E7E4EF; }
   .jumbotron h3 {
     text-align: center;
@@ -38,12 +39,12 @@ body {
     flex-wrap: wrap;
     justify-content: space-between; }
 
-.taskChangeable {
+.listChangeable {
   background: none;
   border: none;
   text-align: center; }
 
-.taskChangeable:focus {
+.listChangeable:focus {
   outline: none; }
 
 #listNewName {
@@ -51,14 +52,22 @@ body {
   border: none;
   text-align: center;
   padding-top: 10px;
-  font-size: 2em; }
+  font-size: 1.75em; }
 
 #listNewName:focus {
   outline: none; }
 
+#taskNewName {
+  background: none;
+  border: none;
+  text-align: center; }
+
+#taskNewName:focus {
+  outline: none; }
+
 #theLists {
   padding-top: 10px;
-  font-size: 2em; }
+  font-size: 1.75em; }
   #theLists div {
     text-align: center; }
 

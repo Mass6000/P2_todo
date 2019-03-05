@@ -6,7 +6,7 @@ $myAccentColorTwo: #112057;
 $myAccentColorThree: #0B1544;
 $myDeleteColor: #FF0000;
 $mySelectedColor: #008000;
-$myListsSize: 2em;
+$myListsSize: 1.75em;
 $myJumboMargins: 15px;
 $myJumboPaddings: 10px;
 $myListsPaddings: 10px;
@@ -39,6 +39,7 @@ body {
 
   h1 {
     text-align: center;
+    margin-top: $myJumboMargins;
     color: $myBackgroundLight;
   }
 
@@ -65,13 +66,13 @@ body {
   }
 }
 
-.taskChangeable {
+.listChangeable {
   background: none;
   border: none;
   text-align: center;
 }
 
-.taskChangeable:focus {
+.listChangeable:focus {
   outline: none;
 }
 
@@ -84,6 +85,16 @@ body {
 }
 
 #listNewName:focus {
+  outline: none;
+}
+
+#taskNewName {
+  background: none;
+  border: none;
+  text-align: center;
+}
+
+#taskNewName:focus {
   outline: none;
 }
 
