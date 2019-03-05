@@ -65,6 +65,16 @@ body {
   }
 }
 
+.taskChangeable {
+  background: none;
+  border: none;
+  text-align: center;
+}
+
+.taskChangeable:focus {
+  outline: none;
+}
+
 #listNewName {
   background: none;
   border: none;
@@ -74,8 +84,10 @@ body {
 }
 
 #listNewName:focus {
-  outline: none;;
+  outline: none;
 }
+
+
 
 #theLists {
   padding-top: $myListsPaddings;
@@ -100,6 +112,7 @@ body {
     text-align: center;
   }
 }
+
 
 .fa-minus-circle {
   color: $myDeleteColor;

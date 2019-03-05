@@ -38,6 +38,14 @@ body {
     flex-wrap: wrap;
     justify-content: space-between; }
 
+.taskChangeable {
+  background: none;
+  border: none;
+  text-align: center; }
+
+.taskChangeable:focus {
+  outline: none; }
+
 #listNewName {
   background: none;
   border: none;

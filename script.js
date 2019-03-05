@@ -8,6 +8,7 @@ class List {
     constructor(listName) {
         this.name = listName;
         this.chosen = false;
+        this.tasks = [];
     }
 
     changeListName(listName) {
@@ -47,9 +48,7 @@ class Task {
 // This is where input come into the program
 
 
-// $('#listNewName').on('click', function () {
-//     document.execCommand('selectAll', false, null);
-// });
+
 
 function addList(list, event) {
     switch (event.key) {
@@ -71,13 +70,32 @@ function addList(list, event) {
     }
 }
 
+function changeListName(list, item, event) {
+    console.log('list =', list, '   item = ', item, '     event = ', event);
+    switch (event.key) {
+        case 'Enter':
+            list = list.toString();
+            let simpleTest = listName.filter(function(listName) {
+                return listName.name === list;
+            });
+            if (list === '' || simpleTest.length > 0) {
+                simpleTest = [];
+                alert ('You entered the same list name as before or you entered a blank list name');
+            } else {
+                listName[item].changeListName(list);
+                reWriteList(listName);
+            }
+            break;
+    }
+}
+
 function reWriteList(listName) {
     $(`.listFlex`).remove();
     for (let i = 0; i < listName.length; i++) {
         $(`#listName${i}`).remove();
     }
     for (let i = 0; i < listName.length; i++) {
-        $(`#theLists`).append(`<div id="listName${i}" class="listFlex"><i id="circleHole${i}" onclick="lcheckMe(${i})" class="far fa-circle"></i><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i><span>${listName[i].name}</span><i id="deleteMe" onclick="ldeleteMe(${i})" class="fas fa-minus-circle"></i>
+        $(`#theLists`).append(`<div id="listName${i}" class="listFlex"><i id="circleHole${i}" onclick="lcheckMe(${i})" class="far fa-circle"></i><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i><input class="taskChangeable" size="17" value="${listName[i].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeListName(this.value, ${i}, event)" ></input><i id="deleteMe" onclick="ldeleteMe(${i})" class="fas fa-minus-circle"></i>
         </div>`)
     }
     for (let i = 0; i < listName.length; i++) {
@@ -109,6 +127,9 @@ function ldeleteMe(item) {
     reWriteList(listName);
 }
 
+$('.taskChangeable').on('click', function () {
+    document.execCommand('selectAll', false, null);
+});
 
 
 
