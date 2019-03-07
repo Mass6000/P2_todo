@@ -76,6 +76,16 @@ body {
   outline: none;
 }
 
+.taskChangeable {
+  background: none;
+  border: none;
+  text-align: center;
+}
+
+.taskChangeable:focus {
+  outline: none;
+}
+
 #listNewName {
   background: none;
   border: none;
@@ -97,8 +107,6 @@ body {
 #taskNewName:focus {
   outline: none;
 }
-
-
 
 #theLists {
   padding-top: $myListsPaddings;

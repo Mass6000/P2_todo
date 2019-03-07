@@ -1,10 +1,14 @@
+// Variables
+
 let listName = [],
     taskName = [];
 
-// Global Variables
-listCount = 0;
+// Initial State Setup
+$(`#taskNewName`).hide();
+$(`#jumbo2`).hide();
 
-// $(`#taskNewName`).hide();
+
+// Models (Classes) - One for Lists and One for Tasks
 
 class List {
     constructor(listName) {
@@ -26,27 +30,26 @@ class List {
     }
 }
 
-
 class Task {
-    constructor(listName, taskName) {
-        this.taskName = taskName;
-        this.taskComplete = false;
+    constructor(taskName) {
+        this.name = taskName;
+        this.complete = false;
     }
 
     changeTaskName(taskName) {
-        this.taskName = taskName;
+        this.name = taskName;
     }
 
     completeTask() {
-        this.taskComplete = true;
+        this.complete = true;
     }
 
     unCompleteTask() {
-        this.taskComplete = false;
+        this.complete = false;
     }
 }
 
-// This part of the program handles lists
+// Functions to handle lists
 
 
 function addList(list, event) {
@@ -60,8 +63,9 @@ function addList(list, event) {
                 simpleTest = [];
                 alert('You entered the same list name as before or you entered a blank list name');
             } else {
-                listName[listCount] = new List(list);
-                listCount++;
+                console.log('listName.length == ', listName.length);
+                listName[listName.length] = new List(list);
+                console.log('list =', list);
                 reWriteList(listName);
             }
             $('#listNewName').val('');
@@ -107,6 +111,31 @@ function reWriteList(listName) {
     }
 }
 
+function reWriteTask(taskName) {
+    $(`.taskFlex`).remove();
+    for (let t = 0; t < taskName.length; t++) {
+        $(`#taskName${t}`).remove();
+    }
+    for (let t = 0; t < taskName.length; t++) {
+        $(`#theTasks`).append(`<div id="taskName${t}" class="taskFlex"><i id="tcircleHole${t}" onclick="tcheckMe(${t})" class="far fa-circle"></i><i id="tcircleCheck${t}" onclick="tunCheckMe(${t})" class="fas fa-check-circle"></i><input class="taskChangeable" size="30" value="${taskName[t].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeTaskName(this.value, ${t}, event)"></input><i id="deleteMe" onclick="tdeleteMe(${t})" class="fas fa-minus-circle"></i>
+        </div>`)
+    }
+    for (let t = 0; t < taskName.length; t++) {
+        if (taskName[t].complete) {
+            $(`#tcircleHole${t}`).hide();
+            $(`#tcircleCheck${t}`).show();
+        } else {
+            $(`#tcircleCheck${t}`).hide();
+            $(`#tcircleHole${t}`).show();
+        }
+    }
+    for (let l = 0; l < listName.length; l++) {
+        if (listName[l].chosen) {
+            listName[l].tasks = taskName;
+        }
+    }
+}
+
 function lcheckMe(item) {
     $(`#circleHole${item}`).hide();
     $(`#circleCheck${item}`).show();
@@ -116,8 +145,13 @@ function lcheckMe(item) {
     for (i = 0; i < listName.length; i++) {
         if (listName[i].chosen) {
             $(`h3`).html(`<h3><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i>${listName[i].name} Tasks`);
+            taskName = listName[i].tasks;
         }
     }
+    $(`#taskNewName`).show();
+    $(`#jumbo2`).show();
+    reWriteTask(taskName);
+
 }
 
 function lunCheckMe(item) {
@@ -128,10 +162,16 @@ function lunCheckMe(item) {
     $(`#theLists`).show();
     reWriteList(listName);
     $(`h3`).html(`<h3>Tasks</h3>`);
+    $(`#taskNewName`).hide();
+    $(`#jumbo2`).hide();
+    console.log('taskName.length = ',taskName.length);
+    for (let t = 0; t < taskName.length; t++) {
+        $(`#taskName${t}`).remove();
+    }
+    taskName = [];
 }
 
 function ldeleteMe(item) {
-    listCount--;
     listName.splice(item, 1);
     reWriteList(listName);
 }
@@ -140,8 +180,33 @@ $('.listChangeable').on('click', function () {
     document.execCommand('selectAll', false, null);
 });
 
+$('.taskChangeable').on('click',function () {
+    document.execCommand('selectAll', false, null);
+})
 
-// This part of the program handles tasks
+
+// Functions to handle tasks
 
 
-function addTask(value, event) {}
+function addTask(task, event) {
+    switch (event.key) {
+        case 'Enter':
+            task = task.toString();
+            let simpleTest = taskName.filter(function (taskName) {
+                return taskName.name === task;
+            });
+            if (task === '' || simpleTest.length > 0) {
+                simpleTest = [];
+                alert('You entered the same task name as before or you entered a blank task name');
+            } else {
+                console.log('taskName.length =', taskName.length);
+                taskName[taskName.length] = new Task(task);
+                reWriteTask(taskName);
+// todo write the tasks to the correct listName
+            }
+
+
+            $('#taskNewName').val('');
+            break;
+    }
+}

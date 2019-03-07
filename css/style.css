@@ -47,6 +47,14 @@ body {
 .listChangeable:focus {
   outline: none; }
 
+.taskChangeable {
+  background: none;
+  border: none;
+  text-align: center; }
+
+.taskChangeable:focus {
+  outline: none; }
+
 #listNewName {
   background: none;
   border: none;
