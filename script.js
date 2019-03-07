@@ -63,9 +63,7 @@ function addList(list, event) {
                 simpleTest = [];
                 alert('You entered the same list name as before or you entered a blank list name');
             } else {
-                console.log('listName.length == ', listName.length);
                 listName[listName.length] = new List(list);
-                console.log('list =', list);
                 reWriteList(listName);
             }
             $('#listNewName').val('');
@@ -111,31 +109,6 @@ function reWriteList(listName) {
     }
 }
 
-function reWriteTask(taskName) {
-    $(`.taskFlex`).remove();
-    for (let t = 0; t < taskName.length; t++) {
-        $(`#taskName${t}`).remove();
-    }
-    for (let t = 0; t < taskName.length; t++) {
-        $(`#theTasks`).append(`<div id="taskName${t}" class="taskFlex"><i id="tcircleHole${t}" onclick="tcheckMe(${t})" class="far fa-circle"></i><i id="tcircleCheck${t}" onclick="tunCheckMe(${t})" class="fas fa-check-circle"></i><input class="taskChangeable" size="30" value="${taskName[t].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeTaskName(this.value, ${t}, event)"></input><i id="deleteMe" onclick="tdeleteMe(${t})" class="fas fa-minus-circle"></i>
-        </div>`)
-    }
-    for (let t = 0; t < taskName.length; t++) {
-        if (taskName[t].complete) {
-            $(`#tcircleHole${t}`).hide();
-            $(`#tcircleCheck${t}`).show();
-        } else {
-            $(`#tcircleCheck${t}`).hide();
-            $(`#tcircleHole${t}`).show();
-        }
-    }
-    for (let l = 0; l < listName.length; l++) {
-        if (listName[l].chosen) {
-            listName[l].tasks = taskName;
-        }
-    }
-}
-
 function lcheckMe(item) {
     $(`#circleHole${item}`).hide();
     $(`#circleCheck${item}`).show();
@@ -164,7 +137,6 @@ function lunCheckMe(item) {
     $(`h3`).html(`<h3>Tasks</h3>`);
     $(`#taskNewName`).hide();
     $(`#jumbo2`).hide();
-    console.log('taskName.length = ',taskName.length);
     for (let t = 0; t < taskName.length; t++) {
         $(`#taskName${t}`).remove();
     }
@@ -199,7 +171,6 @@ function addTask(task, event) {
                 simpleTest = [];
                 alert('You entered the same task name as before or you entered a blank task name');
             } else {
-                console.log('taskName.length =', taskName.length);
                 taskName[taskName.length] = new Task(task);
                 reWriteTask(taskName);
 // todo write the tasks to the correct listName
@@ -209,4 +180,61 @@ function addTask(task, event) {
             $('#taskNewName').val('');
             break;
     }
+}
+
+function changeTaskName(task, item, event) {
+    switch (event.key) {
+        case 'Enter':
+            task = task.toString();
+            let simpleTest = taskName.filter(function (taskName) {
+                return taskName.name === task;
+            });
+            if (task === '' || simpleTest.length > 0) {
+                simpleTest = [];
+                alert('You entered the same task name as before or you entered a black task name');
+            } else {
+                taskName[item].changeTaskName(task);
+                reWriteTask(taskName);
+            }
+            break;
+    }
+}
+
+function reWriteTask(taskName) {
+    $(`.taskFlex`).remove();
+    for (let t = 0; t < taskName.length; t++) {
+        $(`#taskName${t}`).remove();
+    }
+    for (let t = 0; t < taskName.length; t++) {
+        $(`#theTasks`).append(`<div id="taskName${t}" class="taskFlex"><i id="tcircleHole${t}" onclick="tcheckMe(${t})" class="far fa-circle"></i><i id="tcircleCheck${t}" onclick="tunCheckMe(${t})" class="fas fa-check-circle"></i><input class="taskChangeable" size="30" value="${taskName[t].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeTaskName(this.value, ${t}, event)"></input><i id="deleteMe" onclick="tdeleteMe(${t})" class="fas fa-minus-circle"></i>
+        </div>`)
+    }
+    for (let t = 0; t < taskName.length; t++) {
+        if (taskName[t].complete) {
+            $(`#tcircleHole${t}`).hide();
+            $(`#tcircleCheck${t}`).show();
+        } else {
+            $(`#tcircleCheck${t}`).hide();
+            $(`#tcircleHole${t}`).show();
+        }
+    }
+    for (let l = 0; l < listName.length; l++) {
+        if (listName[l].chosen) {
+            listName[l].tasks = taskName;
+        }
+    }
+}
+
+function tcheckMe(item) {
+    $(`#tcircleHole${item}`).hide();
+    $(`#tcircleCheck${item}`).show();
+    taskName[item].completeTask();
+    reWriteTask(taskName);
+}
+
+function tunCheckMe(item) {
+    $(`#tcircleCheck${item}`).hide();
+    $(`#tcircleHole${item}`).show();
+    taskName[item].unCompleteTask();
+    reWriteTask(taskName);
 }
