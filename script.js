@@ -213,9 +213,12 @@ function reWriteTask(taskName) {
         if (taskName[t].complete) {
             $(`#tcircleHole${t}`).hide();
             $(`#tcircleCheck${t}`).show();
+            // $(`#taskName${t}`).css('text-decoration', 'line-through');
+            $(`#taskName${t}`).css('background-color', '#e5f2e5');
         } else {
             $(`#tcircleCheck${t}`).hide();
             $(`#tcircleHole${t}`).show();
+            $(`#taskName${t}`).css('text-decoration', 'none');
         }
     }
     for (let l = 0; l < listName.length; l++) {
@@ -236,5 +239,10 @@ function tunCheckMe(item) {
     $(`#tcircleCheck${item}`).hide();
     $(`#tcircleHole${item}`).show();
     taskName[item].unCompleteTask();
+    reWriteTask(taskName);
+}
+
+function tdeleteMe(item) {
+    taskName.splice(item, 1);
     reWriteTask(taskName);
 }
