@@ -50,6 +50,7 @@ class Task {
     }
 }
 
+// Check for localStorage
 (function () {
     if (localStorage.jsctdData) {
         mydata = JSON.parse(localStorage.jsctdData);
@@ -96,7 +97,7 @@ function changeListName(list, item, event) {
             });
             if (list === '' || simpleTest.length > 0) {
                 simpleTest = [];
-                alert('You entered the same list name as before or you entered a blank list name');
+                $('#myModalList').modal('toggle');
             } else {
                 listName[item].changeListName(list);
                 reWriteList(listName);
@@ -216,7 +217,7 @@ function changeTaskName(task, item, event) {
             });
             if (task === '' || simpleTest.length > 0) {
                 simpleTest = [];
-                alert('You entered the same task name as before or you entered a black task name');
+                $('#myModalTask').modal('toggle');
             } else {
                 taskName[item].changeTaskName(task);
                 reWriteTask(taskName);

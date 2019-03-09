@@ -52,16 +52,17 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/script.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="494">
-                      <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+                    <state relative-caret-position="507">
+                      <caret line="218" column="32" lean-forward="true" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
                       <folding>
+                        <element signature="e#841#1322#0" />
                         <element signature="n#!!block;n#addList#0" />
                         <element signature="n#!!block;n#changeListName#0" />
+                        <element signature="n#!!block;n#reWriteList#0" />
                         <element signature="n#!!block;n#lcheckMe#0" />
                         <element signature="n#!!block;n#lunCheckMe#0" />
                         <element signature="n#!!block;n#ldeleteMe#0" />
                         <element signature="n#!!block;n#addTask#0" />
-                        <element signature="n#!!block;n#changeTaskName#0" />
                         <element signature="n#!!block;n#reWriteTask#0" />
                         <element signature="n#!!block;n#tcheckMe#0" />
                         <element signature="n#!!block;n#tunCheckMe#0" />
@@ -169,12 +170,12 @@
       <workItem from="1551902698374" duration="5684000" />
       <workItem from="1551990373877" duration="9471000" />
       <workItem from="1552055633581" duration="585000" />
-      <workItem from="1552074012132" duration="16991000" />
+      <workItem from="1552074012132" duration="17410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94276000" />
+    <option name="totallyTimeSpent" value="94695000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3360" y="0" width="1920" height="1080" extended-state="0" />
@@ -250,16 +251,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        <state relative-caret-position="507">
+          <caret line="218" column="32" lean-forward="true" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
           <folding>
+            <element signature="e#841#1322#0" />
             <element signature="n#!!block;n#addList#0" />
             <element signature="n#!!block;n#changeListName#0" />
+            <element signature="n#!!block;n#reWriteList#0" />
             <element signature="n#!!block;n#lcheckMe#0" />
             <element signature="n#!!block;n#lunCheckMe#0" />
             <element signature="n#!!block;n#ldeleteMe#0" />
             <element signature="n#!!block;n#addTask#0" />
-            <element signature="n#!!block;n#changeTaskName#0" />
             <element signature="n#!!block;n#reWriteTask#0" />
             <element signature="n#!!block;n#tcheckMe#0" />
             <element signature="n#!!block;n#tunCheckMe#0" />
