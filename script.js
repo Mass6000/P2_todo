@@ -60,12 +60,10 @@ class Task {
                 taskName[t] = new Task(mydata[l].tasks[t].name, mydata[l].tasks[t].complete);
             }
             listName[l].tasks = taskName;
-            console.log(`listName[${l}].tasks = `, listName[l].tasks, ` = taskName =`, taskName);
         }
     }
     reWriteList(listName);
 })();
-
 
 // Functions to handle lists
 
@@ -114,7 +112,7 @@ function reWriteList(listName) {
         $(`#listName${i}`).remove();
     }
     for (let i = 0; i < listName.length; i++) {
-        $(`#theLists`).append(`<div id="listName${i}" class="listFlex"><i id="circleHole${i}" onclick="lcheckMe(${i})" class="far fa-circle"></i><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i><input class="listChangeable" size="22" value="${listName[i].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeListName(this.value, ${i}, event)" ></input><i id="deleteMe" onclick="ldeleteMe(${i})" class="fas fa-minus-circle"></i>
+        $(`#theLists`).append(`<div id="listName${i}" class="listFlex"><i id="circleHole${i}" onclick="lcheckMe(${i})" class="far fa-circle"></i><i id="circleCheck${i}" onclick="lunCheckMe(${i})" class="fas fa-check-circle"></i><input class="listChangeable" size="20" value="${listName[i].name}" onclick="document.execCommand('selectAll',false,null)" onkeyup="changeListName(this.value, ${i}, event)" ></input><i id="deleteMe" onclick="ldeleteMe(${i})" class="fas fa-minus-circle"></i>
         </div>`)
     }
     for (let i = 0; i < listName.length; i++) {
@@ -281,7 +279,6 @@ function tdeleteMe(item) {
 }
 
 function deleteAllCompletedTasks() {
-    console.log('I am getting here');
     for (let t = taskName.length; t > 0; t--) {
         if (taskName[t-1].complete) {
             taskName.splice(t-1, 1);
@@ -291,6 +288,5 @@ function deleteAllCompletedTasks() {
 }
 
 function setMyData() {
-    // console.log('I am here at setMyData. this is what listName looks like: ', listName);
     localStorage.setItem('jsctdData', JSON.stringify(listName));
 }
