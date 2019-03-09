@@ -3,15 +3,11 @@
 let listName = [],
     taskName = [];
 
-// Initial State Setup
-$(`#taskNewName`).hide();
-$(`#jumbo2`).hide();
-
 
 // Models (Classes) - One for Lists and One for Tasks
 
 class List {
-    constructor(listName) {
+    constructor(listName, selected) {
         this.name = listName;
         this.chosen = false;
         this.tasks = [];
@@ -31,9 +27,9 @@ class List {
 }
 
 class Task {
-    constructor(taskName) {
+    constructor(taskName, complete) {
         this.name = taskName;
-        this.complete = false;
+        this.complete = complete;
     }
 
     changeTaskName(taskName) {
@@ -49,8 +45,30 @@ class Task {
     }
 }
 
-// Functions to handle lists
 
+// Initial State Setup
+
+$(`#taskNewName`).hide();
+$(`#jumbo2`).hide();
+
+(function () {
+    if (localStorage.jsctdData) {
+        mydata = JSON.parse(localStorage.jsctdData);
+        for (let l = 0; l < mydata.length; l++) {
+            taskName = [];
+            listName[l] = new List(mydata[l].name, mydata[l].chosen);
+            for (let t = 0; t < mydata[l].tasks.length; t++) {
+                taskName[t] = new Task(mydata[l].tasks[t].name, mydata[l].tasks[t].complete);
+            }
+            listName[l].tasks = taskName;
+            console.log(`listName[${l}].tasks = `, listName[l].tasks, ` = taskName =`, taskName);
+        }
+    }
+    reWriteList(listName);
+})();
+
+
+// Functions to handle lists
 
 function addList(list, event) {
     switch (event.key) {
@@ -63,7 +81,8 @@ function addList(list, event) {
                 simpleTest = [];
                 alert('You entered the same list name as before or you entered a blank list name');
             } else {
-                listName[listName.length] = new List(list);
+                let chosen = false;
+                listName[listName.length] = new List(list, chosen);
                 reWriteList(listName);
             }
             $('#listNewName').val('');
@@ -90,6 +109,7 @@ function changeListName(list, item, event) {
 }
 
 function reWriteList(listName) {
+    setMyData();
     $(`.listFlex`).remove();
     for (let i = 0; i < listName.length; i++) {
         $(`#listName${i}`).remove();
@@ -144,15 +164,20 @@ function lunCheckMe(item) {
 }
 
 function ldeleteMe(item) {
-    listName.splice(item, 1);
-    reWriteList(listName);
+    $(`#listName${item}`).animate({
+        opacity: '0'
+    }, 1000, function() {
+        listName.splice(item, 1);
+        reWriteList(listName);
+        }
+    );
 }
 
 $('.listChangeable').on('click', function () {
     document.execCommand('selectAll', false, null);
 });
 
-$('.taskChangeable').on('click',function () {
+$('.taskChangeable').on('click', function () {
     document.execCommand('selectAll', false, null);
 })
 
@@ -171,7 +196,8 @@ function addTask(task, event) {
                 simpleTest = [];
                 alert('You entered the same task name as before or you entered a blank task name');
             } else {
-                taskName[taskName.length] = new Task(task);
+                let complete = false;
+                taskName[taskName.length] = new Task(task, complete);
                 reWriteTask(taskName);
 // todo write the tasks to the correct listName
             }
@@ -201,6 +227,7 @@ function changeTaskName(task, item, event) {
 }
 
 function reWriteTask(taskName) {
+    setMyData(listName);
     $(`.taskFlex`).remove();
     for (let t = 0; t < taskName.length; t++) {
         $(`#taskName${t}`).remove();
@@ -245,4 +272,9 @@ function tunCheckMe(item) {
 function tdeleteMe(item) {
     taskName.splice(item, 1);
     reWriteTask(taskName);
+}
+
+function setMyData() {
+    // console.log('I am here at setMyData. this is what listName looks like: ', listName);
+   localStorage.setItem('jsctdData', JSON.stringify(listName));
 }
