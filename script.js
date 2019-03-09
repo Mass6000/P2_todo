@@ -3,6 +3,11 @@
 let listName = [],
     taskName = [];
 
+// Initial State Setup
+
+$(`#taskNewName`).hide();
+$(`#jumbo2`).hide();
+$(`footer`).hide();
 
 // Models (Classes) - One for Lists and One for Tasks
 
@@ -45,12 +50,6 @@ class Task {
     }
 }
 
-
-// Initial State Setup
-
-$(`#taskNewName`).hide();
-$(`#jumbo2`).hide();
-
 (function () {
     if (localStorage.jsctdData) {
         mydata = JSON.parse(localStorage.jsctdData);
@@ -79,7 +78,7 @@ function addList(list, event) {
             });
             if (list === '' || simpleTest.length > 0) {
                 simpleTest = [];
-                alert('You entered the same list name as before or you entered a blank list name');
+                $('#myModalList').modal('toggle');
             } else {
                 let chosen = false;
                 listName[listName.length] = new List(list, chosen);
@@ -143,6 +142,7 @@ function lcheckMe(item) {
     }
     $(`#taskNewName`).show();
     $(`#jumbo2`).show();
+    $(`footer`).show();
     reWriteTask(taskName);
 
 }
@@ -157,6 +157,7 @@ function lunCheckMe(item) {
     $(`h3`).html(`<h3>Tasks</h3>`);
     $(`#taskNewName`).hide();
     $(`#jumbo2`).hide();
+    $(`footer`).hide();
     for (let t = 0; t < taskName.length; t++) {
         $(`#taskName${t}`).remove();
     }
@@ -165,10 +166,10 @@ function lunCheckMe(item) {
 
 function ldeleteMe(item) {
     $(`#listName${item}`).animate({
-        opacity: '0'
-    }, 1000, function() {
-        listName.splice(item, 1);
-        reWriteList(listName);
+            opacity: '0'
+        }, 250, function () {
+            listName.splice(item, 1);
+            reWriteList(listName);
         }
     );
 }
@@ -194,7 +195,7 @@ function addTask(task, event) {
             });
             if (task === '' || simpleTest.length > 0) {
                 simpleTest = [];
-                alert('You entered the same task name as before or you entered a blank task name');
+                $('#myModalTask').modal('toggle');
             } else {
                 let complete = false;
                 taskName[taskName.length] = new Task(task, complete);
@@ -270,11 +271,26 @@ function tunCheckMe(item) {
 }
 
 function tdeleteMe(item) {
-    taskName.splice(item, 1);
+    $(`#taskName${item}`).animate({
+            opacity: '0'
+        }, 250, function () {
+            taskName.splice(item, 1);
+            reWriteTask(taskName);
+        }
+    );
+}
+
+function deleteAllCompletedTasks() {
+    console.log('I am getting here');
+    for (let t = taskName.length; t > 0; t--) {
+        if (taskName[t-1].complete) {
+            taskName.splice(t-1, 1);
+        }
+    }
     reWriteTask(taskName);
 }
 
 function setMyData() {
     // console.log('I am here at setMyData. this is what listName looks like: ', listName);
-   localStorage.setItem('jsctdData', JSON.stringify(listName));
+    localStorage.setItem('jsctdData', JSON.stringify(listName));
 }

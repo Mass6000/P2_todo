@@ -13,10 +13,13 @@ $myListsPaddings: 10px;
 
 body {
   background-color: $myBackgroundLight;
-  height: 2000px;
   font-family: 'Roboto', sans-serif;
+  height: 100%;
 }
 
+html {
+  height: 100%
+}
 
 .testingButton {
   padding: 0;
@@ -111,6 +114,7 @@ body {
 #theLists {
   padding-top: $myListsPaddings;
   font-size: $myListsSize;
+
   div {
     text-align: center;
   }
@@ -148,21 +152,15 @@ body {
   color: $mySelectedColor;
 }
 
-//.navContainer {
-//  background-color: $myZebraColor;
-//
-//  .navbar-toggler {
-//    border: 0;
-//  }
-//
-//  .btn {
-//    background-color: $myAccentColorOne;
-//    color: $myBackgroundLight;
-//    border-color: $myAccentColorThree;
-//  }
-//
-//
-//
-//}
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#deleteAllCompletedTasks {
+  position: relative;
+  bottom: 0;
+}
 
 
